@@ -11,7 +11,7 @@ app = FastAPI()
 def read():
     return read()
 
-
+ 
 
 
 @app.post("/upload")
