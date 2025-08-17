@@ -1,5 +1,7 @@
 from fastapi import FastAPI, UploadFile, HTTPException, File
 from processUploadedFile import process_uploaded_file, read
+from common.merchants import list_merchants
+import os
 import logging
 logger = logging.getLogger('uvicorn.error')
 logger.setLevel(logging.DEBUG)
@@ -15,14 +17,11 @@ app.add_middleware(
   allow_methods = ["*"],
   allow_headers = ["*"]
 )
- 
-@app.get("/")
-def read():
-    return read()
-
- 
-
 
 @app.post("/upload")
 def upload(file: UploadFile = File(...)):
     return process_uploaded_file(file)
+
+@app.get("/merchants")
+def list_merchant():
+  return list_merchants()
