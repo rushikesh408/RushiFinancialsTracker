@@ -1,5 +1,8 @@
 import { useState } from "react";
 import axios from 'axios';
+import Header from "./commons/Header";
+import Merchants from "./Tables/MerchantsAndTotals";
+
 //import http from "http-common";
 
 function Home() {
@@ -7,27 +10,15 @@ function Home() {
     const [file, setFile] = useState(null);
 
     const handleFileUpload = (event) => {
-        //console.log("File selected");
+
 
         setFile(event.target.files[0]);
 
-        //console.log("inside handlefileupload");
-        //console.log(event.target.files[0]);
-
-        //console.log("inside mkfqw");
 
 
     };
 
-    /*const upload = (file, onUploadProgress) => {
 
-        return http.post("/upload", formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-            onUploadProgress,
-        });
-    };*/
 
     const handleUploadButton = async (event) => {
 
@@ -47,7 +38,9 @@ function Home() {
     return (
 
         <div>
-            <h1>Welcome to Rushi Financials</h1>
+            <Header />
+
+
 
             <p>Upload here <br />
 
@@ -55,6 +48,8 @@ function Home() {
 
                 <button onClick={e => handleUploadButton(e)}>Upload</button>
             </p>
+
+            <Merchants />
         </div>
 
 
