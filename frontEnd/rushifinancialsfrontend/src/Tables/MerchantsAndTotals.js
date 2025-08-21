@@ -4,12 +4,14 @@ import { useState } from "react";
 function Merchants() {
     const [data, setData] = useState([]);   // keep as []
 
+
     const getMerchants = async () => {
         try {
             const response = await axios.get("http://127.0.0.1:8000/merchants");
 
             // ✅ Replace old data, don't append
             setData([response.data]);
+
         } catch (error) {
             console.error("Error fetching merchants:", error);
         }
