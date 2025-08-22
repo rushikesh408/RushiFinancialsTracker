@@ -13,12 +13,7 @@ function Home() {
     const ref = useRef()
 
     const handleFileUpload = (event) => {
-
-
         setFile(event.target.files[0]);
-
-
-
     };
 
 
