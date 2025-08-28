@@ -1,6 +1,7 @@
 import base64
 from openai import OpenAI
 import Database.mongo_db as mongo_db
+import json
 
 client = OpenAI()
 
@@ -64,10 +65,16 @@ def encode_image(image_path):
         response.output_text.find("```json")
         response.output_text.find("```")
         json_output = response.output_text.split("```json")[1].split("```")[0].strip()
+        strtojson = json.loads(json_output)
         print("JSON Output by rushi:", json_output)
+        print("type")
+        print(type(strtojson))
+        print("below is the json object")
+        print(strtojson)
+        print(strtojson.get("merchant_name"))
         mongo_db.get_database()
         mongo_db.get_collection()
-        mongo_db.insert_json_output(json_output)
+        mongo_db.insert_json_output(strtojson)
 
     except Exception as e:
         print(f"An error occurred while encoding the image: {e}")

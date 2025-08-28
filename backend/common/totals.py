@@ -5,7 +5,7 @@ from bson.json_util import dumps
 
 
 def readTotals():
-    totaExpense = {"Total Expenses": 0.0}
+    totalExpense = {"Total Expenses": 0.0}
     total = 0.0
     merchant_collection = (
         mongo_db.get_collection().find()
@@ -21,6 +21,6 @@ def readTotals():
         merchant_name = json.loads(bill).get("merchant_name")
         # total = float(json.loads(bill).get("total_cost")) + total
         total += float(json.loads(bill).get("total_cost"))
-        totaExpense["Total Expenses"] = total
+        totalExpense["Total Expenses"] = total
 
-    return totaExpense
+    return totalExpense
